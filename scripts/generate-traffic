@@ -1,0 +1,7 @@
+#!/bin/bash -xe
+
+ab -c5 -n1000 http://localhost:8080/fast & 
+ab -c10 -n50 http://localhost:8080/slow & 
+
+wait
+
