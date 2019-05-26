@@ -7,6 +7,7 @@ services:
             - 9300:9300
         environment:
             - discovery.type=single-node
+            - ES_JAVA_OPTS=-Xms512m -Xmx512m
         networks:
             - elk
     kibana:
@@ -17,6 +18,21 @@ services:
             - elk
         depends_on:
             - elasticsearch
+    apm-server:
+        image: docker.elastic.co/apm/apm-server:7.1.0
+        ports:
+            - 8200:8200
+        environment:
+            - output.elasticsearch.hosts=['http://elasticsearch:9200']
+            - apm-server.host="0.0.0.0:8200"
+            - setup.kibana.host="kibana:5601"
+            - setup.template.enabled=true
+            - logging.to_files=false
+        networks:
+            - elk
+        depends_on:
+            - elasticsearch
+            - kibana
 networks:
     elk:
         driver: bridge
