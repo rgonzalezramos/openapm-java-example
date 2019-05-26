@@ -19,4 +19,4 @@
 ./scripts/generate-traffic
 ```
 
-Access [Kibana](http://localhost:5601).
+Access [Kibana](http://localhost:5601/app/apm#/services).
