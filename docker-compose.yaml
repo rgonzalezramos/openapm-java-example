@@ -45,6 +45,16 @@ services:
         depends_on:
             - elasticsearch
             - kibana
+    mysql:
+        image: mysql:5.7
+        environment:
+            - MYSQL_DATABASE=openapm-java-example
+            - MYSQL_USER=openapm-java-example
+            - MYSQL_PASSWORD=openapm-java-example
+            - MYSQL_ROOT_PASSWORD=openapm-java-example
+        ports:
+            - 3306:3306
+
 networks:
     elk:
         driver: bridge

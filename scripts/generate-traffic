@@ -2,6 +2,7 @@
 
 ab -c5 -n1000 http://localhost:8080/fast & 
 ab -c10 -n50 http://localhost:8080/slow & 
+ab -c10 -n100 http://localhost:8080/db & 
 
 wait
 
