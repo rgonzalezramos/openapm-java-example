@@ -1,5 +1,6 @@
 package rob.openapmjavaexample;
 
+import co.elastic.apm.api.ElasticApm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ public class Endpoints {
 
     @RequestMapping(value = "/fast", method = RequestMethod.GET, produces = "text/plain")
     public @ResponseBody String fast() {
+        ElasticApm.currentTransaction().setUser(null, "user@userland.com", null);
         return "Hello";
     }
 
