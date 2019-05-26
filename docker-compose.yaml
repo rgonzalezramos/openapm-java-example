@@ -18,6 +18,18 @@ services:
             - elk
         depends_on:
             - elasticsearch
+    logstash:
+        image: logstash:7.1.0
+        ports:
+            - 4560:4560
+        environment:
+            - LS_JAVA_OPTS=-Xmx256m -Xms256m
+        volumes:
+            - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+        networks:
+            - elk
+        depends_on:
+            - elasticsearch
     apm-server:
         image: docker.elastic.co/apm/apm-server:7.1.0
         ports:

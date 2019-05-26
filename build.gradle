@@ -17,5 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'co.elastic.apm', name: 'apm-agent-attach', version: '1.6.1'
 	implementation group: 'co.elastic.apm', name: 'apm-agent-api', version: '1.6.1'
+	implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.3'
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
